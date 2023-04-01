@@ -1,0 +1,32 @@
+# Main.yml file for Lynis role definition
+
+- name: "Updates all packages"
+  apt:
+    name: "*"
+    state: latest
+
+- name: "Installs Lynis"
+  apt:
+    name: lynis
+    state: latest
+
+- name: "Run Lynis general audit on machine"
+  shell: "lynis audit system --quick > lynis-report-main.dat"
+
+- name: "Transfer of Test and Debug report"
+  fetch:
+    src: "/var/log/lynis.log"
+    dest: "../lynis-reports/lynis.log_{{ inventory_hostname }}.dat"
+    flat: true
+
+- name: "Transfer of Main Data report"
+  fetch:
+    src: "/var/log/lynis-report.dat"
+    dest: "../lynis-reports/lynis-report-main_{{ inventory_hostname }}.dat"
+    flat: true
+
+- name: "Transfer of Data report"
+  fetch:
+    src: "/var/log/lynis-report.dat"
+    dest: "../lynis-reports/lynis-report_{{ inventory_hostname }}.dat"
+    flat: true
