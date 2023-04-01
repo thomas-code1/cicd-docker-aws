@@ -9,3 +9,9 @@ variable "ec2_size" {
   type        = string
   default     = "t2.micro"
 }
+
+variable "server_name" {
+  description = "List of app servers"
+  type        = list(string)
+  default     = ["Prod", "Test"]
+}
