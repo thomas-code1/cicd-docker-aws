@@ -1,0 +1,46 @@
+# Main.yml file for Docker role definition
+
+- name: Install the packages needed for Docker
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - gnupg
+    - ca-certificates
+    - curl
+
+- name: "Downloads the GPG Key"
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+- name: "Adds repository to repository list"
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    state: present
+
+- name: "Updates packages and installs docker-ce"
+  apt: name={{ item }} state=latest update_cache=yes
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+# - name: "Installs Docker module via pip"
+#   pip:
+#     name: docker
+
+# - name: "Installs Docker-compose module via pip"
+#   pip:
+#     name: docker-compose
+
+# - name: "Displays Docker service status"
+#   shell: "sudo systemctl status docker"
+
+# - name: "Adds user ubuntu to group Docker"
+#   ansible.builtin.user:
+#     name: ubuntu
+#     groups: docker
+#     append: true
