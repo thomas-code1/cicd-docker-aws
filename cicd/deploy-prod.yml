@@ -4,15 +4,15 @@
   become: true
   tasks:
     - name: Pull the webapp image
-      docker_image:
+      docker_image: 
         name: tomgfr/webapp:latest
         source: pull
 
-    - name: Run the weapp container
+    - name: Run the webapp container
       docker_container:
         name: webapp-prod
         image: tomgfr/webapp:latest
         state: started
-        pull: true # makes sure the image is always downloaded
+        pull: true    # makes sure the image is always downloaded
         ports:
           - "80:80"
