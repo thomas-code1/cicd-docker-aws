@@ -4,4 +4,4 @@
   become: true
   roles:
     - role: docker
-    - role: lynis 
+    - role: lynis

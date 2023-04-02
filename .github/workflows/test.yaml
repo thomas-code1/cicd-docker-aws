@@ -27,14 +27,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build the docker image
-        run: pwd
-      #        run: docker image build -t myapp:0.1 .
+        run: docker image build -t webapp:latest .
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Push the image to Docker Registry
+        run: docker push tomgfr/myrepo
 
   # deploy:
   #   runs-on: ubuntu-latest
