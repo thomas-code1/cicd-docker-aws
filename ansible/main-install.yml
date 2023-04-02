@@ -1,6 +1,6 @@
 ---
 - name: "Installation of Docker on web server"
-  hosts: webserver
+  hosts: dev
   become: true
   roles:
     - role: docker
