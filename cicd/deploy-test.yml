@@ -1,0 +1,6 @@
+---
+- name: Pull docker image
+  hosts: dev
+  become: true
+  tasks:
+    shell: whoami
