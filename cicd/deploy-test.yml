@@ -3,5 +3,16 @@
   hosts: dev
   become: true
   tasks:
-    - name: A small test
-      shell: whoami
+    - name: Pull the webapp image
+      docker_image: 
+        name: tomgfr/webapp:latest
+        source: pull
+
+    - name: Run the weapp container
+      docker_container:
+        name: webapp-test
+        image: tomgfr/webapp:latest
+        state: started
+        pull: true    # makes sure the image is always downloaded
+        ports:
+          - "80:80"

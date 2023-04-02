@@ -1,7 +1,7 @@
 ---
 - name: "Installation of Docker on web server"
-  hosts: dev
+  hosts: all
   become: true
   roles:
     - role: docker
-    - role: lynis
+#    - role: lynis

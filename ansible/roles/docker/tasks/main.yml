@@ -9,6 +9,7 @@
     - gnupg
     - ca-certificates
     - curl
+    - python3-pip # installs pip for python3
 
 # https://docs.docker.com/engine/install/ubuntu/
 - name: "Downloads the GPG Key"
@@ -31,4 +32,17 @@
     - docker-ce-cli
     - containerd.io
     - docker-buildx-plugin
-    - docker-compose-plugin
+
+- name: "Installs Docker Module via pip"
+  pip:
+    name: docker
+
+- name: "Installs Docker-compose Module via pip"
+  pip:
+    name: docker-compose
+
+- name: "Adds user ubuntu to group Docker"
+  user:
+    name: ubuntu
+    groups: docker
+    append: true
