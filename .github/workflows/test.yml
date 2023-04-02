@@ -30,7 +30,7 @@ jobs:
       - name: Build and push the docker image
         run: |
           docker image build -t webapp:latest .
-          docker push tomgfr/webapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/webapp:latest
 
   # deploy:
   #   runs-on: ubuntu-latest
