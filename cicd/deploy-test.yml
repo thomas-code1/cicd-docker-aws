@@ -3,4 +3,5 @@
   hosts: dev
   become: true
   tasks:
+    - name: A small test
     shell: whoami
