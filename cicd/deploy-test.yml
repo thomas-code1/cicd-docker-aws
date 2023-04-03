@@ -1,6 +1,6 @@
 ---
 - name: Pull docker image
-  hosts: dev
+  hosts: test
   become: true
   tasks:
     - name: Pull the webapp image

@@ -1,12 +1,12 @@
-[production]
+[prod]
 webserver01 ansible_ssh_host=${public_ip[0]}
 
-[dev]
+[test]
 webserver02 ansible_ssh_host=${public_ip[1]}
 
 [webserver:children]
-production
-dev
+prod
+test
 
 [webserver:vars]
 ansible_ssh_port=22
