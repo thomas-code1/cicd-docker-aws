@@ -3,6 +3,12 @@
   hosts: prod
   become: true
   tasks:
+
+    - name: Log into Docker Hub
+      docker_login:
+        username: $dockerhub_username
+        password: $dockerhub_password
+
     - name: Pull the webapp image
       docker_image: 
         name: tomgfr/webapp:latest
