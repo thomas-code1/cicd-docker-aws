@@ -1,7 +1,7 @@
 ---
-- name: "Installation on the server"
+- name: "Installation of packages on the server"
   hosts: all
   become: true
   roles:
     - role: docker
-    - role: lynis
+#    - role: lynis
