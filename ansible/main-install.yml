@@ -5,3 +5,15 @@
   roles:
     - role: docker
 #    - role: lynis
+
+- name: .bashrc setup
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy of .bashrc from ubuntu to root user
+      copy:
+        src: /home/{{user}}/.bashrc
+        dest: /root/.bashrc
+        remote_src: yes
+        owner: root
+        group: root

@@ -22,7 +22,7 @@
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
     state: present
 
-- name: "Update packages and install docker-ce"
+- name: "Update packages and install docker"
   apt:
     name: "{{ item }}"
     state: latest
@@ -33,13 +33,12 @@
     - containerd.io
     - docker-buildx-plugin
 
-- name: "Install Docker Module via pip"
+- name: "Install Docker and Docker Compose modules via pip"
   pip:
-    name: docker
-
-- name: "Install Docker-compose Module via pip"
-  pip:
-    name: docker-compose
+    name: "{{ item }}"
+  with_items:
+    - docker
+    - docker-compose
 
 - name: "Add user ubuntu to group Docker"
   user:
