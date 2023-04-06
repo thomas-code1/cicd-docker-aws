@@ -1,5 +1,5 @@
 ---
-- name: "Installation of Docker on web server"
+- name: "Installation on the server"
   hosts: all
   become: true
   roles:
