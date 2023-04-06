@@ -6,18 +6,18 @@
 
     - name: Log into Docker Hub
       docker_login:
-        username: "{{ dh_username }}"
+        username: tomgfr
         password: "{{ dh_password }}"
 
     - name: Pull the webapp image
       docker_image: 
-        name: "{{ dh_username }}/webapp:latest"
+        name: "tomgfr/webapp:latest"
         source: pull
 
     - name: Run the webapp container
       docker_container:
         name: webapp-prod
-        image: "{{ dh_username }}/webapp:latest"
+        image: "tomgfr/webapp:latest"
         state: started
         pull: true    # makes sure the image is always downloaded
         ports:
