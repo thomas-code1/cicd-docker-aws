@@ -6,8 +6,8 @@
 
     - name: Log into Docker Hub
       docker_login:
-        username: {{ dh_username }}
-        password: {{ dh_password }}
+        username: tomgfr
+        password: "{{ dh_password }}"
 
     - name: Pull the webapp image
       docker_image: 
